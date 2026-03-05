@@ -18,7 +18,8 @@ $$
 
 where `v` is any modulo multiplicative inverse of `a(mod m)`
 
-> Note: `m` is set as 256 to encrypt the message byte by byte
+> [!NOTE] 
+> `m` is set as 256 to encrypt the message byte by byte
 
 ### Usage
 Compile the code
@@ -30,7 +31,9 @@ Encryption
 ```
 ./cipher -f $FILENAME -a $A_VALUE -b $B_VALUE
 ```
-> Note: `$A_VALUE` must be coprime to to m (i.e 256 = 2^8) ... just make it odd
+
+> [!NOTE]
+> `$A_VALUE` must be coprime to to m (i.e 256 = 2^8) ... just make it odd
 > 
 > Optionally output flag: `-o output.txt`
 
@@ -38,8 +41,8 @@ Decryption
 ```
 ./cipher -d -f $FILENAME -a $A_VALUE -b $B_VALUE
 ```
-> Note: the `$A_VALUE` and `$B_VALUE` must be the same as during the encryption
-> step 
+> [!NOTE]
+> the `$A_VALUE` and `$B_VALUE` must be the same as during the encryption step 
 
 ## TODO
 - [ ] Crack Affine Cipher
