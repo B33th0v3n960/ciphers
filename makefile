@@ -8,7 +8,7 @@ CC = gcc
 # -g : include debugging information
 # -fsanitize=address,undefined: sanitizers
 # -fno-omit-frame-pointer: always maintain and use the frame pointer register
-CFLAGS = -Wall -Wextra -g -fsanitize=address,undefined -fno-omit-frame-pointer -Icipher
+CFLAGS = -Wall -Wextra -g -fsanitize=address,undefined -fno-omit-frame-pointer
 
 # Target executable name
 TARGET = cipher
@@ -17,7 +17,7 @@ TARGET = cipher
 BUILD_DIR = build
 
 # Source files
-SRCS = main.c cipher/affine.c
+SRCS = main.c ciphers/affine.c
 
 # Object files (replace .c with .o)
 OBJS = $(SRCS:%.c=$(BUILD_DIR)/%.o)
@@ -38,7 +38,10 @@ $(BUILD_DIR)/%.o: %.c | $(BUILD_DIR)
 
 # Order-only prerequisite — create dir if missing
 $(BUILD_DIR):
-	mkdir -p $(BUILD_DIR $@)
+	mkdir -p $(BUILD_DIR)
+
+$(BUILD_DIR)/%.o: %.c
+	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean: 
